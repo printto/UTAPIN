@@ -20,6 +20,11 @@ I'm creating a website where everyone can pin their UTAU to the board (homepage)
 - Boostrap 4
 - GitHub
 
+## Compile the code
+- You will need 2 variables in ```.env``` file
+  1. ```LINK_TO_DATABASE``` is the url to your own database.
+  2. ```SECRET``` is the secret to your own database.
+
 ## External links
 - [What is UTAU/UTAUloid?](https://en.wikipedia.org/wiki/Utau)
 - [UTAU Wiki](https://utau.wikia.com/wiki/UTAU_wiki)
