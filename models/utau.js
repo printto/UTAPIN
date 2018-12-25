@@ -75,7 +75,15 @@ let UtauSchema = mongoose.Schema({
     other: {
         type: String
     },
-    ranked_points: {
+    year_ranked_points: {
+        type: Number,
+        default: 0
+    },
+    month_ranked_points: {
+        type: Number,
+        default: 0
+    },
+    week_ranked_points: {
         type: Number,
         default: 0
     },
