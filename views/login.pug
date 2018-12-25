@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .my-header Login
+  .row(style='margin-top: 50px; margin-bottom: 50px;')
+    .col-lg-4.col-md-3.col-sm-3
+    .col-lg-4.col-md-6.col-sm-6
+      .row
+        .col-lg-12.col-md-12.col-sm-12
+          form.form-group(action='/account/login', method='post')
+            .form-group
+              h1 Our member?
+            .form-group
+              label(for='Input username') Username
+              input.form-control(type='text', placeholder='Username', name='username')
+            .form-group
+              label(for='Input password') Password
+              input.form-control(type='password', placeholder='Password', name='password')
+            button.btn.btn-primary(type='submit') Login
+            p
+              | Want to join? Click 
+              a(href='/account/register')
+                strong HERE
+              |  to register.

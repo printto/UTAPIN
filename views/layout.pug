@@ -1,0 +1,257 @@
+doctype html
+html(lang='en')
+  head
+    if title
+      title UTAPIN :: #{title}
+    else
+      title UTAPIN
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', type='image/png', href='/images/icons/favicon.png')
+    link(rel='stylesheet', type='text/css', href='/vendor/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='/fonts/iconic/css/material-design-iconic-font.min.css')
+    link(rel='stylesheet', type='text/css', href='/fonts/linearicons-v1.0.0/icon-font.min.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/animate/animate.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/css-hamburgers/hamburgers.min.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/animsition/css/animsition.min.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/select2/select2.min.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/daterangepicker/daterangepicker.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/slick/slick.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/MagnificPopup/magnific-popup.css')
+    link(rel='stylesheet', type='text/css', href='/vendor/perfect-scrollbar/perfect-scrollbar.css')
+    link(rel='stylesheet', type='text/css', href='/css/util.css')
+    link(rel='stylesheet', type='text/css', href='/css/main.css')
+    link(rel='stylesheet', type='text/css', href='/css/printto.css')
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+  body.animsition
+    // Header
+    header.header-v2
+      // Header desktop
+      .container-menu-desktop.trans-03
+        .wrap-menu-desktop
+          nav.limiter-menu-desktop.p-l-45
+            // Logo desktop
+            a.logo(href='/')
+              img(src='/images/icons/utapin-logo.png', alt='IMG-LOGO')
+            // Menu desktop
+            .menu-desktop
+              ul.main-menu
+                li
+                  a(href='index.html') Ranking
+                li
+                  a(href='shoping-cart.html') Pins
+                  ul.sub-menu
+                    li
+                      a(href='index.html') See all pins
+                    li
+                      a(href='home-02.html') My pins
+                li
+                  a(href='product.html') UTAUloids
+                  ul.sub-menu
+                    li
+                      a(href='index.html') See all UTAUloids
+                    li
+                      a(href='home-02.html') My UTAUloids
+                li
+                  a(href='product.html') Music board
+                  ul.sub-menu
+                    li
+                      a(href='index.html') Visit music board
+                    li
+                      a(href='home-02.html') My musics
+            // Icon header
+            .wrap-icon-header.flex-w.flex-r-m.h-full
+              .flex-c-m.h-full.p-r-24
+                .icon-header-item.cl2.hov-cl1.trans-04.p-lr-11.js-show-modal-search
+                  i.zmdi.zmdi-search
+              .flex-c-m.h-full.p-lr-19.bor5
+                .icon-header-item.cl2.hov-cl1.trans-04.p-lr-11.js-show-sidebar
+                  i.zmdi.zmdi-menu
+      // Header Mobile
+      .wrap-header-mobile
+        // Logo moblie
+        .logo-mobile
+          a(href='/')
+            img(src='/images/icons/utapin-logo.png', alt='IMG-LOGO')
+        // Icon header
+        .wrap-icon-header.flex-w.flex-r-m.h-full.m-r-15
+          .flex-c-m.h-full.p-r-10
+            .icon-header-item.cl2.hov-cl1.trans-04.p-lr-11.js-show-modal-search
+              i.zmdi.zmdi-search
+        // Button show menu
+        .btn-show-menu-mobile.hamburger.hamburger--squeeze
+          span.hamburger-box
+            span.hamburger-inner
+      // Menu Mobile
+      .menu-mobile
+        ul.main-menu-m
+          li
+            a(href='/') Home
+          li
+            a(href='product.html') Pins
+            ul.sub-menu-m
+              li
+                a(href='index.html') See all pins
+              li
+                a(href='home-02.html') My pins
+            span.arrow-main-menu-m
+              i.fa.fa-angle-right(aria-hidden='true')
+          li
+            a(href='shoping-cart.html') UTAUloids
+            ul.sub-menu-m
+              li
+                a(href='index.html') See all UTAUloids
+              li
+                a(href='home-02.html') My UTAUloids
+            span.arrow-main-menu-m
+              i.fa.fa-angle-right(aria-hidden='true')
+          li
+            a(href='blog.html') Music board
+            ul.sub-menu-m
+              li
+                a(href='index.html') Visit music board
+              li
+                a(href='home-02.html') My musics
+            span.arrow-main-menu-m
+              i.fa.fa-angle-right(aria-hidden='true')
+          if !user
+            li
+              a(href='/account/login') Login/Register
+          else
+            li
+              a(href='index.html') My account
+            li
+              a(href='/account/logout') Logout
+      // Modal Search
+      .modal-search-header.flex-c-m.trans-04.js-hide-modal-search
+        .container-search-header
+          button.flex-c-m.btn-hide-modal-search.trans-04.js-hide-modal-search
+            img(src='/images/icons/icon-close2.png', alt='CLOSE')
+          form.wrap-search-header.flex-w.p-l-15
+            button.flex-c-m.trans-04
+              i.zmdi.zmdi-search
+            input.plh3(type='text', name='search', placeholder='Search...')
+    // Sidebar
+    aside.wrap-sidebar.js-sidebar
+      .s-full.js-hide-sidebar
+      .sidebar.flex-col-l.p-t-22.p-b-25
+        .flex-r.w-full.p-b-30.p-r-27
+          .fs-35.lh-10.cl2.p-lr-5.pointer.hov-cl1.trans-04.js-hide-sidebar
+            i.zmdi.zmdi-close
+        .sidebar-content.flex-w.w-full.p-lr-65.js-pscroll
+          ul.sidebar-link.w-full
+            if user
+              li.p-b-13
+                h3 Logged in as #{user.name}
+              li.p-b-13
+                a.stext-102.cl2.hov-cl1.trans-04(href='#')
+                  | My account
+              li.p-b-13
+                a.stext-102.cl2.hov-cl1.trans-04(href='#')
+                  | My UTAUloids
+              li.p-b-13
+                a.stext-102.cl2.hov-cl1.trans-04(href='/account/logout')
+                  | Logout
+            else
+              form.form-group(action='/account/login', method='post')
+                .form-group
+                  h1 Our member?
+                .form-group
+                  label(for='Input username') Username
+                  input.form-control(type='text', placeholder='Username', name='username')
+                .form-group
+                  label(for='Input password') Password
+                  input.form-control(type='password', placeholder='Password', name='password')
+                button.btn.btn-primary(type='submit') Login
+              p
+                | Want to join? Click 
+                a(href='/account/login-register')
+                  strong HERE
+                |  to register.
+    != messages('message', locals)
+    if errors
+      each error, i in errors
+        div(class='alert alert-danger', style='text-align: center;')
+          p #{error.msg}
+    block content
+    // Footer
+    footer.bg3.p-t-75.p-b-32(style='padding-top: 20px;')
+      .container
+        .container
+          // Tab01
+          div(style='text-align: center;')
+            p
+              | This is beta stage of UTAPIN.
+            p
+              br
+              | This website is designed to support UTAU community to spread the news of each UTAUloids
+              br
+              | and also to rank the UTAUloids weekly, monthly and yearly.
+            p
+              br
+              | You can send the problems or suggestions via my 
+              a(href='http://www.twitter.com/printmov') Twitter
+        .p-t-40
+          p.stext-107.cl6.txt-center
+            // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+            | Copyright ©
+            script.
+              document.write(new Date().getFullYear());
+            |  All rights reserved | This template is made with 
+            i.fa.fa-heart-o(aria-hidden='true')
+            |  by 
+            a(href='https://colorlib.com', target='_blank') Colorlib
+            // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+            // Back to top
+            #myBtn.btn-back-to-top
+              span.symbol-btn-back-to-top
+                i.zmdi.zmdi-chevron-up
+            script(src='/vendor/jquery/jquery-3.2.1.min.js')
+            script(src='/vendor/animsition/js/animsition.min.js')
+            script(src='/vendor/bootstrap/js/popper.js')
+            script(src='/vendor/bootstrap/js/bootstrap.min.js')
+            script(src='/vendor/select2/select2.min.js')
+            script.
+              $(".js-select2").each(function() {
+              $(this).select2({
+              minimumResultsForSearch: 20,
+              dropdownParent: $(this).next('.dropDownSelect2')
+              });
+              })
+            script(src='/vendor/daterangepicker/moment.min.js')
+            script(src='/vendor/daterangepicker/daterangepicker.js')
+            script(src='/vendor/slick/slick.min.js')
+            script(src='/js/slick-custom.js')
+            script(src='/vendor/parallax100/parallax100.js')
+            script.
+              $('.parallax100').parallax100();
+            script(src='/vendor/MagnificPopup/jquery.magnific-popup.min.js')
+            script.
+              $('.gallery-lb').each(function() { // the containers for all your galleries
+              $(this).magnificPopup({
+              delegate: 'a', // the selector for gallery item
+              type: 'image',
+              gallery: {
+              enabled: true
+              },
+              mainClass: 'mfp-fade'
+              });
+              });
+            script(src='/vendor/isotope/isotope.pkgd.min.js')
+            script(src='/vendor/sweetalert/sweetalert.min.js')
+            script(src='/vendor/perfect-scrollbar/perfect-scrollbar.min.js')
+            script.
+              $('.js-pscroll').each(function() {
+              $(this).css('position', 'relative');
+              $(this).css('overflow', 'hidden');
+              var ps = new PerfectScrollbar(this, {
+              wheelSpeed: 1,
+              scrollingThreshold: 1000,
+              wheelPropagation: false,
+              });
+              $(window).on('resize', function() {
+              ps.update();
+              })
+              });
+            script(src='/js/main.js')

@@ -1,0 +1,42 @@
+.rank-pic {
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.category-tag {
+  margin-right: 3px;
+}
+
+.my-header {
+  height: 250px;
+  width: 100%;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-image: url(/images/header-bg.png);
+  text-align: center;
+  color: #FFF;
+  text-shadow: 0 0 5px #C3A, 0 0 10px #C3A, 0 0 15px #C3A, 0 0 20px #C3A, 0 0 30px #F9C, 0 0 40px #F9C, 0 0 55px #F9C, 0 0 75px #F9C;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 72px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  padding-top: 50px;
+}
+
+.alert-error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
