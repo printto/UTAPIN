@@ -46,7 +46,7 @@ let UtauSchema = mongoose.Schema({
         type: String
     },
     media_list: {
-        type: String
+        type: [String]
     },
     birthday: {
         type: Date
