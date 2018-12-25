@@ -74,7 +74,39 @@ router.post('/add', loggedIn, function(req, res) {
     Utau.findOne(query, function(err, utau) {
       if (err) throw err;
       if (!utau) {
-        //TODO: Save UTAU profile to database
+        var temp_utau = new Utau({
+          errors: errors,
+          name: name,
+          short_description: short_description,
+          gender: gender,
+          genre: genre,
+          weight: weight,
+          height: height,
+          like: like,
+          dislike: dislike,
+          flags: flags,
+          image: image,
+          range: range,
+          related: related,
+          age: age,
+          homepage: homepage,
+          chara_item: chara_item,
+          media_list: media_list,
+          birthday: birthday,
+          release: release,
+          personality: personality
+        });
+        temp_utau.save(function(err) {
+          if (err) {
+            console.log(err);
+            return;
+          } else {
+            req.flash('success', "Saved your UTAUloid's profile.");
+            res.redirect('/');
+            //TODO: Redirect to profile page
+            // res.redirect('/utau/profile');
+          }
+        });
       } else {
         req.flash('danger', 'That UTAU is already exist.');
         res.redirect('back');
