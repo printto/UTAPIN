@@ -12,7 +12,7 @@ block content
               h1 Join us~!
             .form-group
               label(for='Input username') Username
-              input.form-control(type='text', placeholder='Username', name='username')
+              input.form-control(type='text', placeholder='Username', name='username', value=username)
             .form-group
               label(for='Input password') Password
               input.form-control(type='password', placeholder='Password', name='password')
@@ -20,14 +20,16 @@ block content
               label(for='Input password') Confirm Password
               input.form-control(type='password', placeholder='Confirm password', name='password2')
             .form-group
-              label(for='Input username') Email
-              input.form-control(type='email', placeholder='Email', name='email')
+              label(for='Input email') Email
+              input.form-control(type='email', placeholder='Email', name='email', value=email)
             .form-group
-              label(for='Input username') Your name
-              input.form-control(type='text', placeholder='What do you want to be called?', name='name')
+              label(for='Input name') Your name
+              input.form-control(type='text', placeholder='What do you want to be called?', name='name', value=name)
             .form-group
-              label(for='Input username') Country
+              label(for='Input country') Country
               select(name='country')
+                if country
+                  option(value=country) #{country}
                 option(value='United States') United States
                 option(value='United Kingdom') United Kingdom
                 option(value='Afghanistan') Afghanistan

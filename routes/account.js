@@ -4,13 +4,13 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 //const flash = require('req-flash');
 
+//Bring in User model
+let User = require('../models/user');
+
 router.get('*', function(req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
-
-//Bring in User model
-let User = require('../models/user');
 
 //Register form
 router.get('/register', ensureUnauthenticated, function(req, res) {
@@ -43,7 +43,11 @@ function regis(req, res, adminBoolean) {
   let errors = req.validationErrors();
   if (errors) {
     res.render('register', {
-      errors: errors
+      errors: errors,
+      name: name,
+      email: email,
+      username: username,
+      country: country
     });
   } else {
     let query = {

@@ -47,6 +47,9 @@ let UserSchema = mongoose.Schema({
     },
     isBanned: {
         type: Boolean
+    },
+    notification: {
+        type: String
     }
 });
 
