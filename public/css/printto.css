@@ -40,3 +40,65 @@
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
+
+.pad-utau-list {
+  padding: 5px;
+}
+
+.utau-list {
+  background-color: #EEE;
+  border: solid 1px;
+  border-color: white black black white;
+  border-radius: 10px;
+  min-height: 400px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.utau-list:hover {
+  background-color: #F5F5F5;
+  border: solid 1px;
+  border-color: white black black white;
+  border-radius: 10px;
+  min-height: 400px;
+  padding: 10px;
+}
+
+.utau-list-add {
+  background-color: #888;
+  border-radius: 10px;
+  height: 400px;
+  padding: 10px;
+  color: white;
+  padding-top: 170px;
+  text-align: center;
+}
+
+.utau-list-add:hover {
+  background-color: #999;
+  border-radius: 10px;
+  height: 400px;
+  padding: 10px;
+  color: white;
+  padding-top: 170px;
+  text-align: center;
+}
+
+.utau-list a {
+  color: black;
+}
+
+.utau-list-icon {
+  margin-top: 10px;
+  height: 250px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.utau-list button {
+  margin-top: 10px;
+  width: 100%;
+}

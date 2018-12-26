@@ -13,9 +13,23 @@ router.get('*', function(req, res, next) {
   next();
 });
 
+router.get('/profile', loggedIn, function(req, res) {
+  Utau.find({}, function(err, utaus) {
+    if (err) {
+      req.flash('danger', 'Error connecting to database: '+err);
+      res.redirect('/');
+    } else {
+      res.render('all_utau', {
+        title: "My UTAUloids",
+        utaus: utaus
+      });
+    }
+  })
+});
+
 //Add UTAU form
 router.get('/add', loggedIn, function(req, res) {
-  res.render('add_utau',{
+  res.render('add_utau', {
     title: "Create UTAU"
   });
 });
@@ -41,6 +55,7 @@ router.post('/add', loggedIn, function(req, res) {
   const birthday = req.body.birthday;
   const release = req.body.release;
   const personality = req.body.personality;
+  const voicebank = req.body.voicebank;
   req.checkBody('name', 'Name is required').notEmpty();
   req.checkBody('short_description', 'Description is required').notEmpty();
   let errors = req.validationErrors();
@@ -65,7 +80,8 @@ router.post('/add', loggedIn, function(req, res) {
       media_list: media_list,
       birthday: birthday,
       release: release,
-      personality: personality
+      personality: personality,
+      voicebank: voicebank
     });
   } else {
     let query = {
@@ -87,24 +103,40 @@ router.post('/add', loggedIn, function(req, res) {
           flags: flags,
           image: image,
           range: range,
-          related: related,
+          related: related.split(","),
           age: age,
           homepage: homepage,
           chara_item: chara_item,
-          media_list: media_list,
+          media_list: media_list.split(","),
           birthday: birthday,
           release: release,
-          personality: personality
+          personality: personality,
+          voicebank: voicebank.split("\r\n"),
+          owner: req.user._id
         });
-        temp_utau.save(function(err) {
+        temp_utau.save(function(err, added_utau) {
           if (err) {
             console.log(err);
             return;
           } else {
-            req.flash('success', "Saved your UTAUloid's profile.");
-            res.redirect('/');
-            //TODO: Redirect to profile page
-            // res.redirect('/utau/profile');
+            let temp_user = {};
+            var utau_list = req.user.utau;
+            utau_list.push(added_utau._id);
+            temp_user.utau = utau_list;
+            let query = {
+              _id: req.user._id
+            };
+            User.updateOne(query, temp_user, function(err2) {
+              if (err2) {
+                console.log(err2)
+                return
+              } else {
+                req.flash('success', "Saved your UTAUloid's profile.");
+                res.redirect('/');
+                //TODO: Redirect to profile page
+                // res.redirect('/utau/profile');
+              }
+            })
           }
         });
       } else {

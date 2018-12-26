@@ -69,10 +69,10 @@ block content
                 label Personality
                 textarea.form-control(type='text', placeholder="Your UTAU's personality", name='personality') #{personality}
     .row
-      .col-lg-4.col-md-3.col-sm-3
-      .form-group.col-lg-4.col-md-6.col-sm-6
-        label Voicebanks<br />(Use "," to seperate between items)
-        textarea.form-control(type='text', placeholder='<a href="DOWNLOAD LINK"> VB name </a>', name='release', value=release)
+      .col-lg-2.col-md-2.col-sm-2
+      .form-group.col-lg-8.col-md-8.col-sm-8(style="padding-left: 30px; padding-right: 30px;")
+        label Voicebanks<br />Format: "name,description,download link"<br />(1 line = 1 item)
+        textarea.form-control(type='text', placeholder='Ex: Act 1-CV voicebank-http://www.printmov.com', name='voicebank') #{voicebank}
     .row(style='margin-bottom: 50px;')
       .col-lg-5.col-md-5.col-sm-5
       button.btn.btn-primary.col-lg-2.col-md-2.col-sm-2(type='submit') Create profile

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .my-header My UTAUloids
+  .row(style="margin: 30px;")
+    .col-lg-2
+    .col-lg-8.col-md-12.col.sm-12
+      h1 My UTAU dashboard
+      .col-lg-12(style="box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5); background-color: #CCC; margin-top: 30px; border-radius: 10px; padding: 20px;")
+        .row
+          if !user.utau.length
+            .pad-utau-list.col-lg-4.col-md-6.col-sm-6
+              .utau-list-add
+                a(href="/utau/add", style="color: white;")
+                  h1 +
+                  | Create UTAU profile
+          else
+            each utau in utaus
+              if user.id === utau.owner
+                .pad-utau-list.col-lg-4.col-md-6.col-sm-6
+                  .utau-list
+                    a(href="/utau/"+utau.id)
+                      h5 #{utau.name}
+                      .utau-list-icon(style="background-image: url("+utau.image+");")
+                    button.btn.btn-success(href="/utau/"+utau.id) View Profile
+                    button.btn.btn-danger(href="/utau/edit/"+utau.id) Edit Profile
+            .pad-utau-list.col-lg-4.col-md-6.col-sm-6
+              .utau-list-add
+                a(href="/utau/add", style="color: white;")
+                  h1 +
+                  | Add more UTAU
+              
+            
