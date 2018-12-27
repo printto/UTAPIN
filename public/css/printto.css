@@ -29,6 +29,15 @@
   padding-top: 50px;
 }
 
+.my-header p {
+  font-size: 20px;
+  text-shadow: none;
+  color: white;
+  font-family: Sans-serif;
+  color: white;
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000;
+}
+
 .alert-error{
   color: #a94442;
   background-color: #f2dede;
@@ -53,6 +62,7 @@
   min-height: 400px;
   padding: 10px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  transition: background-color 0.1s linear;
 }
 
 .utau-list:hover {
@@ -72,6 +82,7 @@
   color: white;
   padding-top: 170px;
   text-align: center;
+  transition: background-color 0.1s linear;
 }
 
 .utau-list-add:hover {
@@ -101,4 +112,24 @@
 .utau-list button {
   margin-top: 10px;
   width: 100%;
+}
+
+.utau-profile-image {
+  height: 400px;
+  box-shadow: 0 0 5px #000;
+  /* background-color: #EFEFEF; */
+  background-color: white;
+  /* transition: background-color 0.1s linear; */
+  transition: height 0.1s linear;
+}
+
+.utau-profile-image:hover {
+  /* background-color: white; */
+  background-color: #F0F0F0;
+  height: 420px;
+}
+
+.text-glow {
+  color: white;
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000;
 }

@@ -167,6 +167,22 @@ router.get('/edit/:id', loggedIn, function(req, res) {
   });
 });
 
+//Load UTAU profile homepage
+router.get('/:id', function(req, res) {
+  Utau.findById(req.params.id, function(err, utau){
+    if(!utau){
+      req.flash('danger', "Invalid URL.");
+      res.redirect('/');
+    }
+    else{
+      res.render('utau_profile', {
+        title: utau.name,
+        utau: utau
+      });
+    }
+  });
+});
+
 //Access control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

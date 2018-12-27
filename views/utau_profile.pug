@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .my-header
+    a(href=utau.image, target='_blank')
+      img.utau-profile-image(src=utau.image)
+    h1.text-glow !{utau.name}
+    p.profile-descripton.text-glow !{utau.short_description}
+  div(style='height: 300px;')
+  //- h1.text-glow(style="text-align: center;") !{utau.name}
