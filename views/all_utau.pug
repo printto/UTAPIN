@@ -22,8 +22,10 @@ block content
                     a(href="/utau/"+utau.id)
                       h5 #{utau.name}
                       .utau-list-icon(style="background-image: url("+utau.image+");")
-                    button.btn.btn-success(href="/utau/"+utau.id) View Profile
-                    button.btn.btn-danger(href="/utau/edit/"+utau.id) Edit Profile
+                    a(href="/utau/"+utau.id)
+                      button.btn.btn-success View Profile
+                    a(href="/utau/edit/"+utau.id)
+                      button.btn.btn-danger Edit Profile
             .pad-utau-list.col-lg-4.col-md-6.col-sm-6
               .utau-list-add
                 a(href="/utau/add", style="color: white;")

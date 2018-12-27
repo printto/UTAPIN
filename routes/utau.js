@@ -147,6 +147,26 @@ router.post('/add', loggedIn, function(req, res) {
   }
 });
 
+//Edit UTAU form
+router.get('/edit/:id', loggedIn, function(req, res) {
+  Utau.findById(req.params.id, function(err, utau){
+    if(!utau){
+      req.flash('danger', "Invalid URL.");
+      res.redirect('/');
+    }
+    else if(!req.user.utau.includes(req.params.id)){
+      req.flash('danger', "You are not the owner of this UTAU, URL permission denied.");
+      res.redirect('/utau/profile');
+    }
+    else{
+      res.render('edit_utau', {
+        title: "Edit UTAU",
+        utau: utau
+      });
+    }
+  });
+});
+
 //Access control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

@@ -1,0 +1,78 @@
+extends layout
+
+block content
+  .my-header Edit UTAU
+  form(action='/utau/edit', method='post')
+    .row(style='margin-top: 50px;')
+      .col-lg-2.col-md-3.col-sm-3
+      .col-lg-8.col-md-6.col-sm-6
+        h1 Edit profile of #{utau.name}~!
+        h6 This form also supports HTML5 tags for decorating your utau profile (beta)
+        .form-group.row(style="padding-top: 30px;")
+          .col-lg-6.col-md-12.col-sm-12(style="padding-left: 30px; padding-right: 30px;")
+              .form-group
+                label Name *
+                input.form-control(type='text', placeholder="Your UTAU's name", name='name', value=utau.name)
+              .form-group
+                label Short Description *
+                input.form-control(type='text', placeholder='Describe your UTAU', name='short_description', value=utau.short_description)
+              .form-group
+                label Gender
+                input.form-control(type='text', placeholder='Gender of your UTAU', name='gender', value=utau.gender)
+              .form-group
+                label Genre
+                input.form-control(type='text', placeholder='What genre is your UTAU?', name='genre', value=utau.genre)
+              .form-group
+                label Weight
+                input.form-control(type='number', placeholder='Weight of your UTAU', name='weight', value=utau.weight)
+              .form-group
+                label Height
+                input.form-control(type='number', placeholder='Height of your UTAU', name='height', value=utau.height)
+              .form-group
+                label Likes
+                input.form-control(type='text', placeholder="What does your UTAU like?", name='like', value=utau.like)
+              .form-group
+                label Doesn't Like
+                input.form-control(type='text', placeholder="What does your UTAU doesn't like?", name='dislike', value=utau.dislike)
+              .form-group
+                label Flags to use
+                input.form-control(type='text', placeholder="You can leave it blank here", name='flags', value=utau.flags)
+              .form-group
+                label Picture link<br />(Picture upload is not available at the moment)
+                input.form-control(type='url', placeholder="Picture link from external website", name='image', value=utau.image)
+          .col-lg-6.col-md-12.col-sm-12(style="padding-left: 30px; padding-right: 30px;")
+              .form-group
+                label Voice range
+                input.form-control(type='text', placeholder="Your UTAU's voice range", name='range', value=utau.range)
+              .form-group
+                label Related Characters<br />(Use "," to seperate between items)
+                input.form-control(type='text', placeholder='Who related to your UTAU?', name='related', value=utau.related)
+              .form-group
+                label Age
+                input.form-control(type='number', placeholder='How old is your UTAU?', name='age', value=utau.age)
+              .form-group
+                label Homepage
+                input.form-control(type='url', placeholder='Any link to your website?', name='homepage', value=utau.homepage)
+              .form-group
+                label Character's item
+                input.form-control(type='text', placeholder='Item/symbol of your UTAUloid?', name='chara_item', value=utau.chara_item)
+              .form-group
+                label Media list<br />(Use "," to seperate between items)
+                input.form-control(type='text', placeholder='<a href="YOUR LINK"> Link name </a>', name='media_list', value=utau.media_list)
+              .form-group
+                label Birthday
+                input.form-control(type='date', placeholder="Your UTAU's birthday", name='birthday', value=utau.birthday)
+              .form-group
+                label Release Date
+                input.form-control(type='date', placeholder="Your UTAU's release date", name='release', value=utau.release)
+              .form-group
+                label Personality
+                textarea.form-control(type='text', placeholder="Your UTAU's personality", name='personality') #{utau.personality}
+    .row
+      .col-lg-2.col-md-2.col-sm-2
+      .form-group.col-lg-8.col-md-8.col-sm-8(style="padding-left: 30px; padding-right: 30px;")
+        label Voicebanks<br />Format: "name,description,download link"<br />(1 line = 1 item)
+        textarea.form-control(type='text', placeholder='Ex: Act 1-CV voicebank-http://www.printmov.com', name='voicebank') #{utau.voicebank}
+    .row(style='margin-bottom: 50px;')
+      .col-lg-5.col-md-5.col-sm-5
+      button.btn.btn-primary.col-lg-2.col-md-2.col-sm-2(type='submit') Create profile
