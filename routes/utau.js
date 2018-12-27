@@ -166,6 +166,9 @@ router.get('/edit/:id', loggedIn, function(req, res) {
     }
   });
 });
+router.post('/edit', loggedIn, function(req, res) {
+  //TODO: Post UTAU edited profile
+});
 
 //Load UTAU profile homepage
 router.get('/:id', function(req, res) {
