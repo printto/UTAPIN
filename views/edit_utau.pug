@@ -11,6 +11,9 @@ block content
         .form-group.row(style="padding-top: 30px;")
           .col-lg-6.col-md-12.col-sm-12(style="padding-left: 30px; padding-right: 30px;")
               .form-group
+                label UTAU profile ID *
+                input.form-control(type='text', placeholder="Your UTAU's ID", name='id', value=utau.id, readonly)
+              .form-group
                 label Name *
                 input.form-control(type='text', placeholder="Your UTAU's name", name='name', value=utau.name)
               .form-group
@@ -72,7 +75,9 @@ block content
       .col-lg-2.col-md-2.col-sm-2
       .form-group.col-lg-8.col-md-8.col-sm-8(style="padding-left: 30px; padding-right: 30px;")
         label Voicebanks<br />Format: "name,description,download link"<br />(1 line = 1 item)
-        textarea.form-control(type='text', placeholder='Ex: Act 1-CV voicebank-http://www.printmov.com', name='voicebank') #{utau.voicebank}
+        textarea.form-control(type='text', placeholder='Ex: Act 1-CV voicebank-http://www.printmov.com', name='voicebank')
+          each voicebank in utau.voicebank
+            | #{voicebank+'\n'}
     .row(style='margin-bottom: 50px;')
       .col-lg-5.col-md-5.col-sm-5
       button.btn.btn-primary.col-lg-2.col-md-2.col-sm-2(type='submit') Create profile

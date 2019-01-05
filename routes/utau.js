@@ -91,7 +91,6 @@ router.post('/add', loggedIn, function(req, res) {
       if (err) throw err;
       if (!utau) {
         var temp_utau = new Utau({
-          errors: errors,
           name: name,
           short_description: short_description,
           gender: gender,
@@ -132,9 +131,7 @@ router.post('/add', loggedIn, function(req, res) {
                 return
               } else {
                 req.flash('success', "Saved your UTAUloid's profile.");
-                res.redirect('/');
-                //TODO: Redirect to profile page
-                // res.redirect('/utau/profile');
+                res.redirect('/utau/profile');
               }
             })
           }
@@ -167,7 +164,70 @@ router.get('/edit/:id', loggedIn, function(req, res) {
   });
 });
 router.post('/edit', loggedIn, function(req, res) {
-  //TODO: Post UTAU edited profile
+  const utau_id = req.body.id;
+  const name = req.body.name;
+  const short_description = req.body.short_description;
+  const gender = req.body.gender;
+  const genre = req.body.genre;
+  const weight = req.body.weight;
+  const height = req.body.height;
+  const like = req.body.like;
+  const dislike = req.body.dislike;
+  const flags = req.body.flags;
+  const image = req.body.image;
+  const range = req.body.range;
+  const related = req.body.related;
+  const age = req.body.age;
+  const homepage = req.body.homepage;
+  const chara_item = req.body.chara_item;
+  const media_list = req.body.media_list;
+  const birthday = req.body.birthday;
+  const release = req.body.release;
+  const personality = req.body.personality;
+  const voicebank = req.body.voicebank;
+  let errors = req.validationErrors();
+  req.checkBody('name', 'Name is required').notEmpty();
+  req.checkBody('short_description', 'Description is required').notEmpty();
+  if (errors) {
+    res.redirect('/utau/edit/'+utau_id);
+  }
+  else {
+    var temp_utau = new Utau({
+      name: name,
+      short_description: short_description,
+      gender: gender,
+      genre: genre,
+      weight: weight,
+      height: height,
+      like: like,
+      dislike: dislike,
+      flags: flags,
+      image: image,
+      range: range,
+      related: related.split(","),
+      age: age,
+      homepage: homepage,
+      chara_item: chara_item,
+      media_list: media_list.split(","),
+      birthday: birthday,
+      release: release,
+      personality: personality,
+      voicebank: voicebank.split("\r\n"),
+      owner: req.user._id
+    });
+    var query = {
+      _id: utau_id
+    }
+    Utau.updateOne(query, temp_utau, function(err) {
+      if (err) {
+        console.log(err)
+        return
+      } else {
+        req.flash('success', "Saved your UTAUloid's profile.");
+        res.redirect('/utau/profile');
+      }
+    });
+  }
 });
 
 //Load UTAU profile homepage
@@ -220,5 +280,10 @@ function ensureUnauthenticated(req, res, next) {
     res.redirect('/');
   }
 }
+
+function dataToHtml(content) {
+    content = content.replace('\r\n', '<br />' );
+    return content;
+};
 
 module.exports = router;
