@@ -1,10 +1,45 @@
 extends layout
 
 block content
+  style !{utau.cssAndScript}
   .my-header
-    a(href=utau.image, target='_blank')
+    a#utau-image(href=utau.image, target='_blank')
       img.utau-profile-image(src=utau.image)
-    h1.text-glow !{utau.name}
-    p.profile-descripton.text-glow !{utau.short_description}
+    h1#utau-name.text-glow !{utau.name}
+    p#utau-description.profile-descripton.text-glow !{utau.short_description}
   div(style='height: 300px;')
-  //- h1.text-glow(style="text-align: center;") !{utau.name}
+  .row.row-profile
+    .col-lg-3
+    .col-lg-2.col-md-4.col-sm-12
+      if utau.gender
+        p#utau-gender Gender:<br />!{utau.gender}
+      if utau.age
+        if utau.age == 1
+          p#utau-age Age:<br />!{utau.age} year
+        else
+          p#utau-age Age:<br />!{utau.age} years
+      if utau.weight
+        p#utau-weight Weight:<br />!{utau.weight} cm.
+      if utau.height
+        p#utau-weight Height:<br />!{utau.height} cm.
+    .col-lg-2.col-md-4.col-sm-12
+      if utau.range
+        p#utau-range Voice Range:<br />!{utau.range}
+      if utau.genre
+        p#utau-genre Genre:<br />!{utau.genre}
+      if utau.chara_item
+        p#utau-chara_item Character's item:<br />!{utau.chara_item}
+      if utau.creator
+        p#utau-creator Creator:<br />!{utau.creator}
+      if utau.voicer
+        p#utau-voicer Voicer:<br />!{utau.voicer}
+    .col-lg-2.col-md-4.col-sm-12
+      if utau.related.length != 0
+        p#utau-related Related characters:
+          each related in utau.related
+            | <br />- !{related}
+      if utau.homepage
+        p#utau-homepage Homepage:<br />
+          a(href=utau.homepage) #{utau.homepage}
+      if utau.birthday
+        p#utau-birthday Birthday:<br />!{utau.birthday}

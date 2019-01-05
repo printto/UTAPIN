@@ -107,6 +107,9 @@ let UtauSchema = mongoose.Schema({
     isLocked: {
         type: Boolean,
         default: false
+    },
+    cssAndScript: {
+        type: String
     }
 });
 

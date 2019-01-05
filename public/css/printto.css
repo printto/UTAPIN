@@ -121,6 +121,7 @@
   background-color: white;
   /* transition: background-color 0.1s linear; */
   transition: height 0.1s linear;
+  border-radius: 5px;
 }
 
 .utau-profile-image:hover {
@@ -132,4 +133,16 @@
 .text-glow {
   color: white;
   text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #000;
+}
+
+.row-profile {
+  font-size: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.row-profile p {
+  margin-bottom: 30px;
+  border: solid grey 2px;
+  border-radius: 5px;
 }

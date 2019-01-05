@@ -38,6 +38,9 @@ block content
                 label Flags to use
                 input.form-control(type='text', placeholder="You can leave it blank here", name='flags', value=flags)
               .form-group
+                label Creator
+                input.form-control(type='text', placeholder='Who created this UTAUloid?', name='creator', value=creator)
+              .form-group
                 label Picture link<br />(Picture upload is not available at the moment)
                 input.form-control(type='url', placeholder="Picture link from external website", name='image', value=image)
           .col-lg-6.col-md-12.col-sm-12(style="padding-left: 30px; padding-right: 30px;")
@@ -65,6 +68,9 @@ block content
               .form-group
                 label Release Date
                 input.form-control(type='date', placeholder="Your UTAU's release date", name='release', value=release)
+              .form-group
+                label Voicer
+                input.form-control(type='text', placeholder='Who voiced your UTAUloid?', name='voicer', value=voicer)
               .form-group
                 label Personality
                 textarea.form-control(type='text', placeholder="Your UTAU's personality", name='personality') #{personality}

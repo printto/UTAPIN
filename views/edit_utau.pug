@@ -41,6 +41,9 @@ block content
                 label Flags to use
                 input.form-control(type='text', placeholder="You can leave it blank here", name='flags', value=utau.flags)
               .form-group
+                label Creator
+                input.form-control(type='text', placeholder='Who created this UTAUloid?', name='creator', value=utau.creator)
+              .form-group
                 label Picture link<br />(Picture upload is not available at the moment)
                 input.form-control(type='url', placeholder="Picture link from external website", name='image', value=utau.image)
           .col-lg-6.col-md-12.col-sm-12(style="padding-left: 30px; padding-right: 30px;")
@@ -49,7 +52,7 @@ block content
                 input.form-control(type='text', placeholder="Your UTAU's voice range", name='range', value=utau.range)
               .form-group
                 label Related Characters<br />(Use "," to seperate between items)
-                input.form-control(type='text', placeholder='Who related to your UTAU?', name='related', value=utau.related)
+                input.form-control(type='text', placeholder='Who related to your UTAU?', name='related', value=utau.related.join(","))
               .form-group
                 label Age
                 input.form-control(type='number', placeholder='How old is your UTAU?', name='age', value=utau.age)
@@ -61,16 +64,30 @@ block content
                 input.form-control(type='text', placeholder='Item/symbol of your UTAUloid?', name='chara_item', value=utau.chara_item)
               .form-group
                 label Media list<br />(Use "," to seperate between items)
-                input.form-control(type='text', placeholder='<a href="YOUR LINK"> Link name </a>', name='media_list', value=utau.media_list)
+                input.form-control(type='text', placeholder='<a href="YOUR LINK"> Link name </a>', name='media_list', value=utau.media_list.join(","))
               .form-group
                 label Birthday
-                input.form-control(type='date', placeholder="Your UTAU's birthday", name='birthday', value=utau.birthday)
+                if utau.birthday
+                  - var birthdate = utau.birthday.getFullYear()+"-"+("0" + (utau.birthday.getMonth()+1)).slice(-2)+"-"+("0" + utau.birthday.getDate()).slice(-2)
+                  input.form-control(type='date', placeholder="Your UTAU's birthday", name='birthday', value=birthdate)
+                else
+                  input.form-control(type='date', placeholder="Your UTAU's birthday", name='birthday')
               .form-group
                 label Release Date
-                input.form-control(type='date', placeholder="Your UTAU's release date", name='release', value=utau.release)
+                if utau.release
+                  - var releasedate = utau.release.getFullYear()+"-"+("0" + (utau.release.getMonth()+1)).slice(-2)+"-"+("0" + utau.release.getDate()).slice(-2)
+                  input.form-control(type='date', placeholder="Your UTAU's release date", name='release', value=releasedate)
+                else
+                  input.form-control(type='date', placeholder="Your UTAU's release date", name='release')
+              .form-group
+                label Voicer
+                input.form-control(type='text', placeholder='Who voiced your UTAUloid?', name='voicer', value=utau.voicer)
               .form-group
                 label Personality
                 textarea.form-control(type='text', placeholder="Your UTAU's personality", name='personality') #{utau.personality}
+              .form-group
+                label Additional CSS for decorating the profile page (beta)
+                textarea.form-control(type='text', placeholder="Example: .row-profile p { background-color: pink; }", name='cssAndScript') #{utau.cssAndScript}
     .row
       .col-lg-2.col-md-2.col-sm-2
       .form-group.col-lg-8.col-md-8.col-sm-8(style="padding-left: 30px; padding-right: 30px;")

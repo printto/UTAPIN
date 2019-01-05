@@ -56,6 +56,8 @@ router.post('/add', loggedIn, function(req, res) {
   const release = req.body.release;
   const personality = req.body.personality;
   const voicebank = req.body.voicebank;
+  const creator = req.body.creator;
+  const voicer = req.body.voicer;
   req.checkBody('name', 'Name is required').notEmpty();
   req.checkBody('short_description', 'Description is required').notEmpty();
   let errors = req.validationErrors();
@@ -81,7 +83,9 @@ router.post('/add', loggedIn, function(req, res) {
       birthday: birthday,
       release: release,
       personality: personality,
-      voicebank: voicebank
+      voicebank: voicebank,
+      creator: creator,
+      voicer: voicer
     });
   } else {
     let query = {
@@ -111,7 +115,9 @@ router.post('/add', loggedIn, function(req, res) {
           release: release,
           personality: personality,
           voicebank: voicebank.split("\r\n"),
-          owner: req.user._id
+          owner: req.user._id,
+          creator: creator,
+          voicer: voicer
         });
         temp_utau.save(function(err, added_utau) {
           if (err) {
@@ -185,6 +191,9 @@ router.post('/edit', loggedIn, function(req, res) {
   const release = req.body.release;
   const personality = req.body.personality;
   const voicebank = req.body.voicebank;
+  const cssAndScript = req.body.cssAndScript;
+  const creator = req.body.creator;
+  const voicer = req.body.voicer;
   let errors = req.validationErrors();
   req.checkBody('name', 'Name is required').notEmpty();
   req.checkBody('short_description', 'Description is required').notEmpty();
@@ -192,7 +201,7 @@ router.post('/edit', loggedIn, function(req, res) {
     res.redirect('/utau/edit/'+utau_id);
   }
   else {
-    var temp_utau = new Utau({
+    var temp_utau = {
       name: name,
       short_description: short_description,
       gender: gender,
@@ -213,8 +222,10 @@ router.post('/edit', loggedIn, function(req, res) {
       release: release,
       personality: personality,
       voicebank: voicebank.split("\r\n"),
-      owner: req.user._id
-    });
+      cssAndScript: cssAndScript,
+      creator: creator,
+      voicer: voicer
+    };
     var query = {
       _id: utau_id
     }
@@ -234,8 +245,23 @@ router.post('/edit', loggedIn, function(req, res) {
 router.get('/:id', function(req, res) {
   Utau.findById(req.params.id, function(err, utau){
     if(!utau){
-      req.flash('danger', "Invalid URL.");
-      res.redirect('/');
+      //Search by name
+      var name = req.params.id.replace('_', ' ' );
+      var query = {
+        name: name
+      }
+      Utau.findOne(query, function(err2, utau2){
+        if(!utau2){
+          req.flash('danger', "Invalid URL.");
+          res.redirect('/');
+        }
+        else{
+          res.render('utau_profile', {
+            title: utau2.name,
+            utau: utau2
+          });
+        }
+      });
     }
     else{
       res.render('utau_profile', {
