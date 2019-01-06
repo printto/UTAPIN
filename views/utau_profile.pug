@@ -22,6 +22,8 @@ block content
         p#utau-weight Weight:<br />!{utau.weight} cm.
       if utau.height
         p#utau-weight Height:<br />!{utau.height} cm.
+      if utau.flags
+        p#utau-flags Recommended Flags:<br />!{utau.flags}
     .col-lg-2.col-md-4.col-sm-12
       if utau.range
         p#utau-range Voice Range:<br />!{utau.range}
@@ -41,5 +43,44 @@ block content
       if utau.homepage
         p#utau-homepage Homepage:<br />
           a(href=utau.homepage) #{utau.homepage}
+      - var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       if utau.birthday
-        p#utau-birthday Birthday:<br />!{utau.birthday}
+        p#utau-birthday Birthday:<br />#{utau.birthday.getDate()} #{monthNames[utau.birthday.getMonth()]}
+      if utau.release
+        p#utau-release Release Date:<br />#{utau.release.getDate()} #{monthNames[utau.release.getMonth()]} #{utau.release.getYear()+1900}
+  if utau.personality
+    .row.row-profile
+      .col-lg-3
+      .col-lg-6
+        p#utau-personality !{utau.personality.replace('\r\n', '<br />' )}
+  if utau.voicebank
+    .row#utau-voicebank-page1.row-profile
+      .col-lg-3
+      .col-lg-6
+        p#utau-voicebank-expander1 Voicebanks:<br />Click here to see all voicebanks
+    .row#utau-voicebank-page2.row-profile(style="display: none;")
+      .col-lg-3
+      .col-lg-6#utau-voicebank
+        span#utau-voicebank-expander2 Click here to hide voicebank list
+        .row#utau-voicebank-header
+          .col-lg-4.col-md-4.col-sm-4#utau-voicebank-name
+            span Voicebank
+          .col-lg-6.col-md-6.col-sm-6.utau-voicebank-center#utau-voicebank-desc
+            span Description
+          .col-lg-2.col-md-2.col-sm-2#utau-voicebank-desc
+            span Link
+        each voicebank in utau.voicebank
+          if voicebank.split(',')[0]
+            .row
+              .col-lg-4.col-md-4.col-sm-4.utau-voicebank-name
+                if voicebank.split(',')[0]
+                  | !{voicebank.split(',')[0]}
+              .col-lg-6.col-md-6.col-sm-6.utau-voicebank-center.utau-voicebank-desc
+                if voicebank.split(',')[1]
+                  | !{voicebank.split(',')[1]}
+              .col-lg-2.col-md-2.col-sm-2.utau-voicebank-link
+                if voicebank.split(',')[2]
+                  a(href=voicebank.split(',')[2]) Click
+
+  .row
+    //TODO: Post and comment section

@@ -137,7 +137,7 @@
 
 .row-profile {
   font-size: 20px;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   text-align: center;
 }
 
@@ -145,4 +145,22 @@
   margin-bottom: 30px;
   border: solid grey 2px;
   border-radius: 5px;
+}
+
+#utau-voicebank {
+  border: solid grey 2px;
+  border-radius: 5px;
+}
+
+#utau-voicebank .row {
+  border-bottom: solid grey 1px;
+}
+
+#utau-voicebank .utau-voicebank-center {
+  border-right: solid grey 1px;
+  border-left: solid grey 1px;
+}
+
+#utau-voicebank-header {
+  border-top: solid grey 1px;
 }
