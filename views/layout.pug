@@ -169,12 +169,13 @@ html(lang='en')
                 a(href='/account/login-register')
                   strong HERE
                 |  to register.
+    block content
     != messages('message', locals)
     if errors
       each error, i in errors
         div(class='alert alert-danger', style='text-align: center;')
-          p #{error.msg}
-    block content
+          span.fa.fa-exclamation-triangle
+          |  #{error.msg}
     // Footer
     footer.bg3.p-t-75.p-b-32(style='padding-top: 20px;')
       .container

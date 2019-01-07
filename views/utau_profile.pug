@@ -2,6 +2,10 @@ extends layout
 
 block content
   style !{utau.cssAndScript}
+  if user
+    - var isOwner = user.utau.indexOf(utau._id) > -1;
+    if isOwner
+      button.btn.btn-sm.btn-light(style='position: absolute; left: 0px;') Edit this profile
   .my-header
     a#utau-image(href=utau.image, target='_blank')
       img.utau-profile-image(src=utau.image)

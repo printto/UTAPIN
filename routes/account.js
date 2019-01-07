@@ -115,11 +115,20 @@ function regis(req, res, adminBoolean) {
 router.get('/login', ensureUnauthenticated, function(req, res) {
   res.render('login');
 });
-
 //Login Process
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: 'back',
+    failureRedirect: 'back',
+    failureFlash: true
+  })(req, res, next);
+});
+//Login Process with next page
+router.post('/login/:nextPage', function(req, res, next) {
+  var nextPage = req.params.nextPage;
+  if(nextPage === "home") nextPage = '/';
+  passport.authenticate('local', {
+    successRedirect: nextPage,
     failureRedirect: '/account/login',
     failureFlash: true
   })(req, res, next);
@@ -129,15 +138,14 @@ router.post('/login', function(req, res, next) {
 router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', 'You are logged out');
-  res.redirect('/account/login');
+  res.redirect('back');
 });
 
-// //Edit user
-// router.get('/edit_address', loggedIn, function(req, res) {
-//   res.render('edit_address', {
-//     user: req.user
-//   });
-// });
+//Edit user
+router.get('/edit', loggedIn, function(req, res) {
+  res.flash('danger', 'Sorry, editing account information is not available at the moment.');
+  res.redirect('back');
+});
 // router.post('/edit_address', function(req, res) {
 //   const address = req.body.address;
 //   const address2 = req.body.address2;

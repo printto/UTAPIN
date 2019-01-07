@@ -1,4 +1,13 @@
 .messages
   each type in Object.keys(locals.messages)
     each message in Object.values(locals.messages)
-      div(class="alert alert-"+type,style='text-align:center;') #{message}﻿
+      div(class="alert alert-"+type,style='text-align:center;')
+        if type === 'error'
+          span.fa.fa-exclamation-triangle
+        else if type === 'danger'
+          span.fa.fa-exclamation-triangle
+        else if type === 'success'
+          span.fa.fa-check-circle
+        else
+          span.fa.fa-info-circle
+        |  #{message}﻿
