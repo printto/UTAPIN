@@ -248,7 +248,7 @@ router.get('/:id', function(req, res) {
       //Search by name
       var name = req.params.id.replace('_', ' ' );
       var query = {
-        name: name
+        name: { $regex: new RegExp("^" + name.toLowerCase(), "i") }
       }
       Utau.findOne(query, function(err2, utau2){
         if(!utau2){
@@ -272,21 +272,6 @@ router.get('/:id', function(req, res) {
   });
 });
 
-//Access control
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    if (req.user.isAdmin) {
-      return next();
-    } else {
-      req.flash('danger', 'Please login as admin account');
-      res.redirect('/account/login');
-    }
-  } else {
-    req.flash('danger', 'Please login');
-    res.redirect('/account/login');
-  }
-}
-
 //Logged in
 function loggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -294,16 +279,6 @@ function loggedIn(req, res, next) {
   } else {
     req.flash('danger', 'Please login');
     res.redirect('/account/login');
-  }
-}
-
-//Access control
-function ensureUnauthenticated(req, res, next) {
-  if (!req.isAuthenticated()) {
-    return next();
-  } else {
-    req.flash('danger', 'You are already logged in');
-    res.redirect('/');
   }
 }
 

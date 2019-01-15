@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div(style='background: #DDD; padding: 20px;')
+    .row
+      .col-lg-3.col-md-2
+      .col-lg-6.col-md-8.col-sm-12
+        form(action='/pins/add', method='post')
+          .form-group
+            label
+              h3 Share the news about UTAU?
+            input.form-control(type='text', placeholder="What's new?", name='title')
+            textarea.form-control(type='text', placeholder="Details", name='content')

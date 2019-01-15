@@ -93,9 +93,11 @@ app.get('/', function(req, res) {
 // Route Files
 let account = require('./routes/account');
 let utau = require('./routes/utau');
+let pins = require('./routes/pins');
 
 app.use('/account', account);
 app.use('/utau', utau);
+app.use('/pins', pins);
 
 //set public folder.
 app.use(express.static(path.join(__dirname, 'public')));
