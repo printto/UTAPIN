@@ -1,6 +1,8 @@
 # UTAPIN Project
 ### UTAU Community Website
 
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
+
 ## What is this website for?
 I'm creating a website where everyone can pin their UTAU to the board (homepage) and everyone can "like" or "comment" on that UTAU's profile.
 
